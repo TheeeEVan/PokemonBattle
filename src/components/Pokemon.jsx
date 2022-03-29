@@ -1,6 +1,7 @@
 import React from 'react'
 // this is the package used to call to the pokiapi for sprites
 import axios from 'axios'
+import './css/pokemon.css'
 
 class Pokemon extends React.Component {
 	constructor(props)
@@ -8,7 +9,9 @@ class Pokemon extends React.Component {
 		super(props)
 
 		this.state = {
-			pokemonid: 0
+			pokemonid: props.pokemonId,
+			health: 100,
+			back: this.props.back ? "back/" : ""
 		}
 	}
 	
@@ -16,7 +19,10 @@ class Pokemon extends React.Component {
 	{
 		return (
 			<div className="pokemon">
-				<img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${this.state.pokemonid}.png`} width="150px"/>
+				<div className="pokemonImage">
+					<img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${this.state.back}${this.state.pokemonid}.png`} width="150px"/>
+				</div>
+				<div className="healthBar normal" style={{"--health": this.state.health+"%"}}>50/100</div>
 			</div>
 		)
 	}
