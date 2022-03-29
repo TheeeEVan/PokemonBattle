@@ -10,13 +10,15 @@
 	--critical: red;
 	/* make the div take up space */
 	width: 100%;
-	height: 10px;
+	height: 20px;
 	/* position div over pokemon so there isnt a huge whitespace */
 	position: absolute;
-	bottom: 8px;
+	bottom: -10px;
 	/* create border so div is visable */
 	border: 1px solid black;
 	border-radius: 5px;
+	/* center text */
+	text-align: center;
 }
 
 .normal {
@@ -29,4 +31,8 @@
 
 .critical {
 	background: linear-gradient(90deg, var(--critical) var(--health), white calc(var(--health) - 100%))
+}
+
+.healthValue {
+	font-size: 0.95rem;
 }

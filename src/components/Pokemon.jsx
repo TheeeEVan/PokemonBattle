@@ -22,7 +22,7 @@ class Pokemon extends React.Component {
 				<div className="pokemonImage">
 					<img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${this.state.back}${this.state.pokemonid}.png`} width="150px"/>
 				</div>
-				<div className="healthBar normal" style={{"--health": this.state.health+"%"}}>50/100</div>
+				<div className="healthBar normal mono" style={{"--health": this.state.health+"%"}}><span className='healthValue'>50/100</span></div>
 			</div>
 		)
 	}

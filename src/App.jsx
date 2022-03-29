@@ -17,7 +17,7 @@ class App extends React.Component {
 	{
 		return(
 			<main>
-				<Pokemon pokemonId="3" back={true} />
+				<Pokemon pokemonId="6" back={true} />
 			</main>
 		)
 	}
