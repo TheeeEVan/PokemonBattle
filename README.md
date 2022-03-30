@@ -1,13 +1,15 @@
-## Running React on Repl.it
+## Pokemon Battle Part II - (Evan Anderson)
 
-[React](https://reactjs.org/) is a popular JavaScript library for building user interfaces.
+![Pokemon logo](https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/640px-International_Pok%C3%A9mon_logo.svg.png)
 
-[Vite](https://vitejs.dev/) is a blazing fast frontend build tool that includes features like Hot Module Reloading (HMR), optimized builds, and TypeScript support out of the box.
+### Features:
+- React based
+- CSS Modules
+- Easily add pokemon with npm scripts
 
-Using the two in conjunction is one of the fastest ways to build a web app.
-
-### Getting Started
-- Hit run
-- Edit [App.jsx](#src/App.jsx) and watch it live update!
-
-By default, Replit runs the `dev` script, but you can configure it by changing the `run` field in the `.replit` file.
+### Setup:
+- Install packages
+```
+npm i
+```
+- Open the repl webpage in a new tab so the page fits on screen

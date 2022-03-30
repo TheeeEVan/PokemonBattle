@@ -1,7 +1,7 @@
 import React from 'react'
 // this is the package used to call to the pokiapi for sprites
 import axios from 'axios'
-import './css/pokemon.css'
+import styles from './css/Pokemon.module.css'
 
 class Pokemon extends React.Component {
 	constructor(props)
@@ -9,20 +9,26 @@ class Pokemon extends React.Component {
 		super(props)
 
 		this.state = {
-			pokemonid: props.pokemonId,
-			health: 100,
-			back: this.props.back ? "back/" : ""
+			pokemon: {
+				pokemonid: props.pokemonId,
+				health: 21,
+				maxHealth: 100,
+				energy: 20,
+				maxEnergy: 20,
+				back: this.props.back ? "back/" : ""
+			}
 		}
 	}
 	
 	render()
 	{
 		return (
-			<div className="pokemon">
+			<div className={styles.pokemon}>
 				<div className="pokemonImage">
-					<img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${this.state.back}${this.state.pokemonid}.png`} width="150px"/>
+					<img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${this.state.pokemon.back}${this.state.pokemon.pokemonid}.png`} width="150px"/>
 				</div>
-				<div className="healthBar normal mono" style={{"--health": this.state.health+"%"}}><span className='healthValue'>50/100</span></div>
+				<div className={this.state.pokemon.health > this.state.pokemon.maxHealth / 5 ? `${styles.healthBar} ${styles.normal}` : `${styles.healthBar} ${styles.critical}`} style={{"--health": (this.state.pokemon.health / this.state.pokemon.maxHealth * 100) + "%"}}></div>
+				<div className={styles.energyBar} style={{"--energy": (this.state.pokemon.energy / this.state.pokemon.maxEnergy * 100) + "%"}}></div>
 			</div>
 		)
 	}
