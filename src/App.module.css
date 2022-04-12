@@ -1,0 +1,24 @@
+.main {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	height: 90vh;
+	gap: 8px;
+	/* add space to bottom of page for smaller screens */
+	margin-bottom: 30px;
+}
+
+.container {
+	border: 4px solid black;
+	border-radius: 5px;
+	min-width: 750px;
+	min-height: 300px;
+	position: relative;
+}
+
+.controls {
+	min-height: 100px;
+}
+
+
