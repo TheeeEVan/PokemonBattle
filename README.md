@@ -13,6 +13,9 @@
 ```
 npm i
 ```
+- Create Vite Config:
+  - Create a file in the repositories root directory named "vite.config.js" (without quotations)
+  - If you are running the project on a local machine
 - Start the repl (ctrl+enter)
 - Open the repl webpage in a new tab (If you do this outside of repl the quit button will not work) so the page fits on screen
 
