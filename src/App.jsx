@@ -28,9 +28,10 @@ class App extends React.Component {
 		this.button1 = this.button1.bind(this)
 	}
 
-	updateLog(data) {
-		this.setState(prevState => {
-			log: prevState.log.concat([data]);
+	// update the log
+	updateLog(text) {
+		this.setState({
+			log: [...this.state.log, text]
 		});
 	}
 
@@ -76,12 +77,17 @@ class App extends React.Component {
 
 	async game()
 	{
-		this.newLogLine("does this work")
+		this.updateLog("does this work")
+	}
+
+	// run game function on load
+	componentDidMount() {
+		this.game();
 	}
 	
 	/* ---------------RENDER--------------- */
 
-	render() {	
+	render() {
 		return (
 			<div>
 				<h1
@@ -103,6 +109,7 @@ class App extends React.Component {
 					<div className={styles.container}>
 						<Log text={this.state.log} />
 					</div>
+					<div className={styles.break}></div>
 					<div className={`${styles.container} ${styles.controls}`}>
 						<Controls
 							pokemon={this.state.pokemon1}
