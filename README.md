@@ -14,4 +14,9 @@
 npm i
 ```
 - Start the repl (ctrl+enter)
-- Open the repl webpage in a new tab so the page fits on screen
+- Open the repl webpage in a new tab (If you do this outside of repl the quit button will not work) so the page fits on screen
+
+### Packages:
+- [react](https://reactjs.org/)
+- [axios](https://www.npmjs.com/package/axios)
+- [react-auto-scroll](https://github.com/brianmcallister/react-auto-scroll)

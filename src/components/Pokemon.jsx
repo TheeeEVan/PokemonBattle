@@ -22,7 +22,6 @@ class Pokemon extends React.Component {
 	{
 		axios.get(`https://pokeapi.co/api/v2/pokemon/${this.state.pokemon.name.toLowerCase()}`)
 		.then(response => {
-			console.log(response)
 			this.setState({id: response.data.id})
 		})
 	}

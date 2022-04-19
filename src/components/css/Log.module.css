@@ -2,8 +2,7 @@
 	position: absolute;
 	bottom: 0.25rem;
 	left: 0.25rem;
-	overflow: scroll;
-	overflow-x: hidden;
+	overflow: hidden;
 	/* ensure scroll bar fits inside container */
 	height: 98%;
 	width: 99%;

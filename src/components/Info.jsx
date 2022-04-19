@@ -32,7 +32,7 @@ class Info extends React.Component {
 						</div>
 						<div>
 							{Object.keys(this.props.pokemon.moves).map(name => {
-								return <p><strong>{name}</strong> | {this.props.pokemon.moves[name][3]}</p>
+								return <p key={Object.keys(this.props.pokemon.moves).indexOf(name)}><strong>{name}</strong> | {this.props.pokemon.moves[name][3]}</p>
 							})}
 							<div className={styles.goBack}>
 								<span>Click anywhere to go back...</span>

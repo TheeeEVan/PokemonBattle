@@ -8,16 +8,16 @@ import allPokemon from '../data/pokemon.json'
 import styles from './css/Game.module.css'
 
 export default class Game extends React.Component {
-	constructor()
+	constructor(props)
 	{
-		super()
+		super(props)
 		this.state = {
 			stage: "game",
-			player1: allPokemon.charizard,
-			player2: allPokemon.raikou,
-			info: {display:"none"},
-			infoPlayer: allPokemon.axew,
-			infoid: null
+			player1: props.pokemon1,
+			player2: props.pokemon2,
+			infoPlayer: allPokemon.axew, // placeholder until user opens info tab
+			infoid: null,
+			info: {display: "none"}
 		}
 
 		this.toggleInfo = this.toggleInfo.bind(this)
@@ -27,12 +27,7 @@ export default class Game extends React.Component {
 
 	toggleInfo()
 	{
-		
-		this.setState(prevState => {
-			return {
-				info: prevState.info.display == "block" ? {display:"none"} : {display:"block"}
-			}
-		})
+		this.setState({info: this.state.info.display == "block" ? {display:"none"} : {display:"block"}})
 	}
 	
 	render()
