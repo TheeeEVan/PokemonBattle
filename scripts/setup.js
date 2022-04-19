@@ -1,3 +1,7 @@
-const isREPL = process.execArgv.includes("-i") || process.argv.length === 1;
-
-console.log(isREPL ? "You're in the REPL" : "You're running a script m8");
+try {
+    const repl = __dirname
+    console.log("test2")
+ } catch (err) {
+   //code run if repl
+   console.log("test")
+ }
