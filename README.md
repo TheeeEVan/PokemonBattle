@@ -19,6 +19,9 @@ npm i
 - Start the repl (ctrl+enter)
 - Open the repl webpage in a new tab (If you do this outside of repl the quit button will not work) so the page fits on screen
 
+### Add A Pokemon:
+- Run ```npm run pokemonMaker```
+- Follow instructions
 ### Packages:
 - [react](https://reactjs.org/)
 - [axios](https://www.npmjs.com/package/axios)
