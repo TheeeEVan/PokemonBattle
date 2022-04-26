@@ -21,7 +21,7 @@ class App extends React.Component {
 				<strong>This project was made by Evan Anderson.</strong>
 			],
 			pokemon1: allPokemon.charizard,
-			pokemon2: allPokemon.axew,
+			pokemon2: allPokemon.bulbasaur,
 			controlsEnabled: true
 		};
 
