@@ -3,7 +3,6 @@ var prompt = require('prompt-sync')();
 const chalk = require("chalk");
 const Spinner = require('cli-spinner').Spinner;
 const fs = require("fs")
-const { execSync } = require("child_process");
 
 // invalid input function cause i dont wanna copy past this over and over again
 function invalid(text = "Invalid Input!") {
@@ -49,7 +48,7 @@ if (action == "1") {
 		console.log("Basic info... □")
 		console.log("Attacks... □")
 		console.log("Confirm Pokemon... □")
-		console.log("Push to github... □")
+		
 
 		console.log("\n\n")
 		
@@ -189,7 +188,7 @@ if (action == "1") {
 		console.log("Basic info... ✅")
 		console.log("Attacks... □")
 		console.log("Confirm Pokemon... □")
-		console.log("Push to github... □")
+		
 
 		console.log("\n\n")
 
@@ -262,7 +261,7 @@ if (action == "1") {
 		console.log("Basic info... ✅")
 		console.log("Attacks... □")
 		console.log("Confirm Pokemon... □")
-		console.log("Push to github... □")
+		
 
 		console.log("\n\n")
 		
@@ -324,7 +323,7 @@ if (action == "1") {
 		console.log("Basic info... ✅")
 		console.log("Attacks... □")
 		console.log("Confirm Pokemon... □")
-		console.log("Push to github... □")
+		
 
 		console.log("\n\n")
 
@@ -387,7 +386,7 @@ if (action == "1") {
 		console.log("Basic info... ✅")
 		console.log("Attacks... □")
 		console.log("Confirm Pokemon... □")
-		console.log("Push to github... □")
+		
 
 		console.log("\n\n")
 		
@@ -471,7 +470,7 @@ if (action == "1") {
 		console.log("Basic info... ✅")
 		console.log("Attacks... ✅")
 		console.log("Confirm Pokemon... □")
-		console.log("Push to github... □")
+		
 
 		console.log("\n\n")
 
@@ -480,23 +479,23 @@ if (action == "1") {
 		console.log(chalk.underline("Type:") + " " + pokemon.type)
 		console.log(chalk.underline("HP:") + " " + pokemon.hp)
 		console.log(chalk.underline("Energy:") + " " + pokemon.energy)
-		console.log(chalk.underline("Attacks:"))
+		console.log(chalk.underline("Attacks:\n"))
 		console.log(chalk.bold(name1+":"))
 		console.log("Damage: " + attack1[0])
 		console.log("Energy: " + attack1[1])
 		console.log("Random: " + attack1[2])
 		console.log("Description: " + attack1[3])
-		console.log(chalk.bold(name2+":"))
+		console.log(chalk.bold("\n" + name2+":"))
 		console.log("Damage: " + attack2[0])
 		console.log("Energy: " + attack2[1])
 		console.log("Random: " + attack2[2])
 		console.log("Description: " + attack2[3])
-		console.log(chalk.bold(name3+":"))
+		console.log(chalk.bold("\n" + name3+":"))
 		console.log("Damage: " + attack3[0])
 		console.log("Energy: " + attack3[1])
 		console.log("Random: " + attack3[2])
 		console.log("Description: " + attack3[3])
-		console.log(chalk.bold(name4+":"))
+		console.log(chalk.bold("\n" + name4+":"))
 		console.log("Damage: " + attack4[0])
 		console.log("Energy: " + attack4[1])
 		console.log("Random: " + attack4[2])
@@ -531,7 +530,7 @@ if (action == "1") {
 			console.log("Basic info... ✅")
 			console.log("Attacks... ✅")
 			console.log("Confirm Pokemon... ✅")
-			console.log("Push to github... □")
+			
 	
 			console.log("\n\n")
 			
@@ -541,7 +540,7 @@ if (action == "1") {
 			allPokemon[pokemon.name.toLowerCase()] = pokemon
 			fs.writeFile('./src/data/pokemon.json', JSON.stringify(allPokemon), (err) => {
 				if (err) { return console.error(err) }
-				spinner.setSpinnerTitle("Saved! ✅")
+				spinner.setSpinnerString("✅")
 				spinner.stop()
 
 				// wait 2 seconds cause it looks nicer lol
@@ -558,47 +557,10 @@ if (action == "1") {
 					console.log("Basic info... ✅")
 					console.log("Attacks... ✅")
 					console.log("Confirm Pokemon... ✅")
-					console.log("Push to github... □")
 			
 					console.log("\n\n")
-
-					console.log(chalk.bold("Would you like to push your changes to a new github branch?") + "This will only work if you are signed into github in your terminal or your github is linked on replit. (y/n)")
-					let push = prompt()
-
-					while (push != "y" && push != "n") {
-						invalid()
-						console.log(chalk.bold("\nWould you like to push your changes to a new github branch?") + "This will only work if you are signed into github in your terminal or your github is linked on replit. (y/n)")
-						push = prompt()
-					}
-
-					if (push == "y") {
-						let githubSpinner = new Spinner("Pushing to github... %s")
-						githubSpinner.setSpinnerString('|/-\\');
-						githubSpinner.start();
-						execSync(`git switch -c create-pokemon-${pokemon.name}`)
-						execSync(`git commit -m "Add new pokemon: ${pokemon.name}"`)
-						execSync(`git push --set-upstream origin create-pokemon-${pokemon.name}`)
-						githubSpinner.stop()
-
-						console.clear()
-
-						// title
-						console.log(chalk.underline(chalk.bold("Create a Pokemon")))
-					
-						// tell user about pokemon submission guidelines
-						console.log(chalk.bold("If you want your pokemon to get approved please make sure to follow the pokemon submission guidelines posted at:\n") + "https://github.com/TheeeEVan/PokemonBattle/blob/main/POKEMON_GUIDELINES.md\n\n")
-				
-						// steps
-						console.log("Basic info... ✅")
-						console.log("Attacks... ✅")
-						console.log("Confirm Pokemon... ✅")
-						console.log("Push to github... ✅")
-				
-						console.log("\n\n")
-						console.log("Done! ✅\n\n")
-						prompt("Press enter to exit...")
-					}
-					
+					console.log("Done! ✅\n\n")
+					prompt("Press enter to exit...")
 				}, 2000)
 				
 			})
