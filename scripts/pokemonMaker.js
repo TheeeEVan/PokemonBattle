@@ -1,5 +1,5 @@
 // import packages
-var prompt = require('prompt-sync')();
+var prompt = require('prompt-sync')({sigint: true, eot: true});
 const chalk = require("chalk");
 const Spinner = require('cli-spinner').Spinner;
 const fs = require("fs")
