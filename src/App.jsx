@@ -9,6 +9,7 @@ import Controls from './components/Controls.jsx';
 // import game data
 import allPokemon from './data/pokemon.json';
 import strengths from './data/strengths.json';
+import config from './data/config.json'
 
 // create a class that is a child of the React.Coponent class
 class App extends React.Component {
@@ -22,23 +23,17 @@ class App extends React.Component {
 			],
 			pokemon1: allPokemon.charizard,
 			pokemon2: allPokemon.bulbasaur,
-			controlsEnabled: true
+			controlsEnabled: true,
+			attack: 0
 		};
 
 		this.button1 = this.button1.bind(this)
 	}
 
-	// update the log
-	updateLog(text) {
-		this.setState({
-			log: [...this.state.log, text]
-		});
-	}
-
 	/* ---------------BUTTON FUNCTIONS--------------- */
 	/* attack 1 */
 	button1() {
-		console.log('Button 1 pressed');
+		this.setState({attack: 1})
 	}
 
 	/* attack 2 */
@@ -68,16 +63,32 @@ class App extends React.Component {
 
 	/* ---------------GAME HANDLING--------------- */
 
-	newLogLine(text)
-	{
-		this.setState(prevState => {
-			log: [...prevState.log, text]
-		})
+	// update the log
+	updateLog(text) {
+		this.setState({
+			log: [...this.state.log, text]
+		});
 	}
 
-	async game()
+	getUserMove() {
+			
+	}
+
+	getComputerMove() {
+			
+	}
+
+	calculateDamage(attacker, defender, attack) {
+		attacker.hp = "1"
+	}
+
+	newTurn() {
+			
+	}
+
+	game()
 	{
-		this.updateLog("does this work")
+		this.calculateDamage(this.state.pokemon1, this.state.pokemon2. 1)
 	}
 
 	// run game function on load
