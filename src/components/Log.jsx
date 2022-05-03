@@ -8,10 +8,10 @@ function Log (props) {
 	return(
 		<div className={styles.logContainer}>
 			<div className={`${styles.log} mono`}>
-				<AutoScroll height={470}>
+				<AutoScroll height={360}>
 					{
 						props.text.map((line) => 
-							<span key={props.text.indexOf(line)}>{line}<br /><hr /></span>
+							<span key={Math.floor(Math.random() * 10000)}>{line}<br /><hr style={{height:"2px", border:"none", color:"#666", backgroundColor:"#666"}}/></span>
 					)}
 				</AutoScroll>
 			</div>

@@ -20,7 +20,7 @@ npm i
 - Open the repl webpage in a new tab (If you do this outside of repl the quit button will not work) so the page fits on screen
 
 ### Add A Pokemon:
-Check [**POKEMON_GUIDELINES.md**](https://github.com/TheeeEVan/PokemonBattle/blob/main/POKEMON_GUIDELINES.md)
+Check [**POKEMON_GUIDELINES.md**](https://github.com/TheeeEVan/PokemonBattle/blob/main/POKEMON_GUIDELINES.md). I'm sure no one will actually push pokemon here but the guidelines are there anyway.
 ### Packages:
 - [react](https://reactjs.org/)
 - [axios](https://www.npmjs.com/package/axios)

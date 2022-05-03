@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './css/Controls.module.css';
 
 function Controls(props) {
+	// lots of states to control brightness on hover
 	const [brightness1, setBrightness1] = React.useState("100%");
 	const [brightness2, setBrightness2] = React.useState("100%");
 	const [brightness3, setBrightness3] = React.useState("100%");
@@ -11,6 +12,7 @@ function Controls(props) {
 	const [brightness7, setBrightness7] = React.useState("100%");
 	const [brightness8, setBrightness8] = React.useState("100%");
 
+	// data in here will be reflected onto the actual buttons
 	const buttons = {
 		button1: { 
 			name: Object.keys(props.pokemon.moves)[0], 
@@ -48,6 +50,7 @@ function Controls(props) {
 
 	return (
 		<div className={styles.container}>
+			{/* each buttons style sets a variable for the background in css, and applies a brightness filter. then we add an onMouseEnter/Leave function which changes that brightness. The on click functions run functions from the app component passed down through props. lastly we set the body of the button to the name reflected in our buttons object. */}
 			<button id="button1" style={{ '--button-bg': buttons.button1.color, filter: `brightness(${brightness1})` }} onClick={() => props.button1()} onMouseEnter={() => {setBrightness1("80%")}} onMouseLeave={() => {setBrightness1("100%")}}>{buttons.button1.name}</button>
 			<button id="button2" style={{ '--button-bg': buttons.button2.color, filter: `brightness(${brightness2})` }} onClick={() => props.button2()} onMouseEnter={() => {setBrightness2("80%")}} onMouseLeave={() => {setBrightness2("100%")}}>{buttons.button2.name}</button>
 			<button id="button3" style={{ '--button-bg': buttons.button3.color, filter: `brightness(${brightness3})` }} onClick={() => props.button3()} onMouseEnter={() => {setBrightness3("80%")}} onMouseLeave={() => {setBrightness3("100%")}}>{buttons.button3.name}</button>

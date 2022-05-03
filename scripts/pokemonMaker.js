@@ -538,7 +538,7 @@ if (action == "1") {
 			spinner.setSpinnerString('|/-\\');
 			spinner.start();
 			allPokemon[pokemon.name.toLowerCase()] = pokemon
-			fs.writeFile('./src/data/pokemon.json', JSON.stringify(allPokemon), (err) => {
+			fs.writeFile('./src/data/pokemon.json', JSON.stringify(allPokemon, null, "\t"), (err) => {
 				if (err) { return console.error(err) }
 				spinner.setSpinnerString("✅")
 				spinner.stop()
