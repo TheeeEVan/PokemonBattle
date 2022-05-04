@@ -151,6 +151,8 @@ if (action == "1") {
 			hp = prompt()
 		}
 
+		hp = parseInt(hp)
+
 		// store the hp and also set maxhp
 		pokemon.hp = parseInt(hp)
 		pokemon.maxhp = parseInt(hp)
@@ -165,6 +167,8 @@ if (action == "1") {
 			console.log(chalk.bold("\nHow much energy does the pokemon have?"))
 			energy = prompt()
 		}
+
+		energy = parseInt(energy)
 
 		// store energy and maxEnergy
 		pokemon.energy = parseInt(energy)
@@ -212,6 +216,8 @@ if (action == "1") {
 			damage1 = prompt()
 		}
 
+		damage1 = parseInt(damage1)
+
 		// energy
 		console.log(chalk.bold(`\nHow much energy does the attack use? (Make sure this is no larger than ${energy}!)`))
 		let energy1 = prompt()
@@ -222,6 +228,8 @@ if (action == "1") {
 			console.log(chalk.bold(`\nHow much energy does the attack use? (Make sure this is no larger than ${energy}!)`))
 			energy1 = prompt()
 		}
+
+		energy1 = parseInt(energy1)
 
 		// is attack random
 		console.log(chalk.bold("\nDoes the attack only hit 50% of the time? (y/n)"))
@@ -280,6 +288,8 @@ if (action == "1") {
 			damage2 = prompt()
 		}
 
+		damage2 = parseInt(damage2)
+
 		console.log(chalk.bold(`\nHow much energy does the attack use? (Make sure this is no larger than ${energy}!)`))
 		let energy2 = prompt()
 
@@ -288,6 +298,8 @@ if (action == "1") {
 			console.log(chalk.bold(`\nHow much energy does the attack use? (Make sure this is no larger than ${energy}!)`))
 			energy2 = prompt()
 		}
+
+		energy2 = parseInt(energy2)
 
 		console.log(chalk.bold("\nDoes the attack only hit 50% of the time? (y/n)"))
 		let random2 = prompt()
@@ -343,6 +355,8 @@ if (action == "1") {
 			damage3 = prompt()
 		}
 
+		damage3 = parseInt(damage3)
+
 		console.log(chalk.bold(`\nHow much energy does the attack use? (Make sure this is no larger than ${energy}!)`))
 		let energy3 = prompt()
 
@@ -351,6 +365,8 @@ if (action == "1") {
 			console.log(chalk.bold(`\nHow much energy does the attack use? (Make sure this is no larger than ${energy}!)`))
 			energy3 = prompt()
 		}
+
+		energy3 = parseInt(energy3)
 
 		console.log(chalk.bold("\nDoes the attack only hit 50% of the time? (y/n)"))
 		let random3 = prompt()
@@ -405,6 +421,8 @@ if (action == "1") {
 			damage4 = prompt()
 		}
 
+		damage4 = parseInt(damage4)
+
 		console.log(chalk.bold(`\nHow much energy does the attack use? (Make sure this is no larger than ${energy}!)`))
 		let energy4 = prompt()
 
@@ -413,6 +431,8 @@ if (action == "1") {
 			console.log(chalk.bold(`\nHow much energy does the attack use? (Make sure this is no larger than ${energy}!)`))
 			energy4 = prompt()
 		}
+
+		energy4 = parseInt(energy4)
 
 		console.log(chalk.bold("\nDoes the attack only hit 50% of the time? (y/n)"))
 		let random4 = prompt()

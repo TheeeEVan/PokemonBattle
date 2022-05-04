@@ -28,7 +28,7 @@ class App extends React.Component {
 				<strong>This project was made by Evan Anderson.</strong>
 			],
 			pokemon1: allPokemon.pikachu,
-			pokemon2: allPokemon.bulbasaur,
+			pokemon2: allPokemon.charizard,
 			controlsEnabled: true,
 			attack: 0
 		};
@@ -107,14 +107,19 @@ class App extends React.Component {
 			let checker = setInterval(() => {
 				if (this.state.attack != 0)
 				{
-					// this checks whether pokemon has enough energy to perform that move
-					if (this.state.pokemon1.energy >= this.state.pokemon1.moves[Object.keys(this.state.pokemon1.moves)[this.state.attack - 1]][1])
-					{
+					if (this.state.attack != 5) {
+						// this checks whether pokemon has enough energy to perform that move
+						if (this.state.pokemon1.energy >= this.state.pokemon1.moves[Object.keys(this.state.pokemon1.moves)[this.state.attack - 1]][1])
+						{
+							clearInterval(checker)
+							resolve()
+						} else {
+							this.updateLog("You don't have enough energy for that move!")
+							this.setState({controlsEnabled: true, attack: 0})
+						}
+					} else {
 						clearInterval(checker)
 						resolve()
-					} else {
-						this.updateLog("You don't have enough energy for that move!")
-						this.setState({controlsEnabled: true, attack: 0})
 					}
 				}
 			}, 500)
@@ -123,7 +128,40 @@ class App extends React.Component {
 
 	// generate a random move that the computer will perform
 	getComputerMove() {
-		
+		return new Promise(resolve => {
+			// check if computer needs to do nothing
+			if (this.state.pokemon2.energy < this.state.pokemon2.minEnergy)
+			{
+				// set attack to nothing if it does
+				this.setState({attack: 5})
+				return resolve()
+			} else { // this runs if pokemon is able to perform an attack
+				// stores if attack is valid or not, initially set to false to get first attack
+				let validAttack = false
+				let attack
+				while (!validAttack) {
+					// generate a random number between 1 and 5
+					attack = Math.floor(Math.random() * 5) + 1
+					// check if attack is nothing
+					if (attack == 5) {
+						// if attack is nothing, set validAttack to true
+						validAttack = true
+					} else {
+						// check if attack is valid
+						if (this.state.pokemon2.moves[Object.keys(this.state.pokemon2.moves)[attack - 1]][1] <= this.state.pokemon2.energy)
+						{
+							validAttack = true
+						} else {
+							validAttack = false
+						}
+					}
+				}
+
+				// set attack to random attack
+				this.setState({attack: attack})
+				return resolve()
+			}
+		})
 	}
 
 	// takes the attacker defender and attack to calculate new stats after attack
@@ -195,7 +233,9 @@ class App extends React.Component {
 	// updates data on new turns
 	newTurn() {
 		return new Promise(resolve => {
-			// we just need to add energy to both pokemon
+			// add energy from config to both pokemon
+			this.state.pokemon1.energy += config.energyIncrease
+			this.state.pokemon2.energy += config.energyIncrease
 			
 			return resolve()
 		})
@@ -223,18 +263,34 @@ class App extends React.Component {
 		this.updateLog("Your Turn!")
 		// get users move
 		await this.getUserMove()
+
 		// check if user selected nothing, update log accordingly
 		if (this.state.attack == 5) {
 			this.updateLog(this.state.pokemon1.name + " did nothing.")
 		} else {
 			this.updateLog(this.state.pokemon1.name + " used " + Object.keys(this.state.pokemon1.moves)[this.state.attack - 1] + "!")
 			await this.delay()
+
+			// calculate the damage taken
 			await this.calculateDamage(this.state.pokemon1, this.state.pokemon2, this.state.attack)
 		}
+
 		await this.delay()
 		this.updateLog("Computers Turn...")
 		await this.delay()
-		this.updateLog("the computer turn isnt done yet lol")
+		// get computer move
+		await this.getComputerMove()
+
+		// check if computer selected nothing, update log accordingly
+		if (this.state.attack == 5) {
+			this.updateLog(this.state.pokemon2.name + " did nothing.")
+		} else {
+			this.updateLog(this.state.pokemon2.name + " used " + Object.keys(this.state.pokemon2.moves)[this.state.attack - 1] + "!")
+			await this.delay()
+
+			// calculate the damage taken
+			await this.calculateDamage(this.state.pokemon2, this.state.pokemon1, this.state.attack)
+		}
 
 		// check if game is over, if it isn't run newTurn then this function again, otherwise run gameover functions
 		if (this.state.pokemon1.hp < 1 || this.state.pokemon2.hp < 1) {
