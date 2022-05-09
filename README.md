@@ -18,7 +18,7 @@
 
 #### Repl.it
 - Run setup in shell: ```npm run setup repl```
-- Start repl (*Ctrl+Enter*))
+- Start repl (*Ctrl+Enter*)
 
 ### Add A Pokemon:
 ***Ensure you have a plan for your pokemon first as this script is only meant to import the data into the program, not to design a pokemon!***
