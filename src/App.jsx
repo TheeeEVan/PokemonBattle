@@ -23,6 +23,7 @@ class App extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
+			stage: "game",
 			log: [
 				<strong>Welcome to Pokemon Battle!</strong>,
 				<strong>This project was made by Evan Anderson.</strong>

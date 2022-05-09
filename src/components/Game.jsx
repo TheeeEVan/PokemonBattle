@@ -12,7 +12,6 @@ export default class Game extends React.Component {
 	{
 		super(props)
 		this.state = {
-			stage: "game",
 			player1: props.pokemon1,
 			player2: props.pokemon2,
 			infoPlayer: allPokemon.axew, // placeholder until user opens info tab

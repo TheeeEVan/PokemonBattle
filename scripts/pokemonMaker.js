@@ -1,3 +1,11 @@
+/*
+
+pokemonMaker.js
+-----------------
+a cli tool for creating user generated pokemon within the app
+
+*/
+
 // import packages
 var prompt = require('prompt-sync')({sigint: true, eot: true});
 const chalk = require("chalk");
@@ -40,9 +48,6 @@ if (action == "1") {
 		
 		// title
 		console.log(chalk.underline(chalk.bold("Create a Pokemon")))
-	
-		// tell user about pokemon submission guidelines
-		console.log(chalk.bold("If you want your pokemon to get approved please make sure to follow the pokemon submission guidelines posted at:\n") + "https://github.com/TheeeEVan/PokemonBattle/blob/main/POKEMON_GUIDELINES.md\n\n")
 
 		// steps
 		console.log("Basic info... □")
@@ -185,8 +190,6 @@ if (action == "1") {
 		// title
 		console.log(chalk.underline(chalk.bold("Create a Pokemon")))
 	
-		// tell user about pokemon submission guidelines
-		console.log(chalk.bold("If you want your pokemon to get approved please make sure to follow the pokemon submission guidelines posted at:\n") + "https://github.com/TheeeEVan/PokemonBattle/blob/main/POKEMON_GUIDELINES.md\n\n")
 
 		// steps
 		console.log("Basic info... ✅")
@@ -261,9 +264,6 @@ if (action == "1") {
 
 		// title
 		console.log(chalk.underline(chalk.bold("Create a Pokemon")))
-	
-		// tell user about pokemon submission guidelines
-		console.log(chalk.bold("If you want your pokemon to get approved please make sure to follow the pokemon submission guidelines posted at:\n") + "https://github.com/TheeeEVan/PokemonBattle/blob/main/POKEMON_GUIDELINES.md\n\n")
 
 		// steps
 		console.log("Basic info... ✅")
@@ -328,9 +328,8 @@ if (action == "1") {
 		// title
 		console.log(chalk.underline(chalk.bold("Create a Pokemon")))
 	
-		// tell user about pokemon submission guidelines
-		console.log(chalk.bold("If you want your pokemon to get approved please make sure to follow the pokemon submission guidelines posted at:\n") + "https://github.com/TheeeEVan/PokemonBattle/blob/main/POKEMON_GUIDELINES.md\n\n")
-
+		
+		
 		// steps
 		console.log("Basic info... ✅")
 		console.log("Attacks... □")
@@ -395,9 +394,6 @@ if (action == "1") {
 		// title
 		console.log(chalk.underline(chalk.bold("Create a Pokemon")))
 	
-		// tell user about pokemon submission guidelines
-		console.log(chalk.bold("If you want your pokemon to get approved please make sure to follow the pokemon submission guidelines posted at:\n") + "https://github.com/TheeeEVan/PokemonBattle/blob/main/POKEMON_GUIDELINES.md\n\n")
-
 		// steps
 		console.log("Basic info... ✅")
 		console.log("Attacks... □")
@@ -483,9 +479,7 @@ if (action == "1") {
 		// title
 		console.log(chalk.underline(chalk.bold("Create a Pokemon")))
 	
-		// tell user about pokemon submission guidelines
-		console.log(chalk.bold("If you want your pokemon to get approved please make sure to follow the pokemon submission guidelines posted at:\n") + "https://github.com/TheeeEVan/PokemonBattle/blob/main/POKEMON_GUIDELINES.md\n\n")
-
+		
 		// steps
 		console.log("Basic info... ✅")
 		console.log("Attacks... ✅")
@@ -543,9 +537,8 @@ if (action == "1") {
 			// title
 			console.log(chalk.underline(chalk.bold("Create a Pokemon")))
 		
-			// tell user about pokemon submission guidelines
-			console.log(chalk.bold("If you want your pokemon to get approved please make sure to follow the pokemon submission guidelines posted at:\n") + "https://github.com/TheeeEVan/PokemonBattle/blob/main/POKEMON_GUIDELINES.md\n\n")
-	
+			
+			
 			// steps
 			console.log("Basic info... ✅")
 			console.log("Attacks... ✅")
@@ -570,8 +563,7 @@ if (action == "1") {
 					// title
 					console.log(chalk.underline(chalk.bold("Create a Pokemon")))
 				
-					// tell user about pokemon submission guidelines
-					console.log(chalk.bold("If you want your pokemon to get approved please make sure to follow the pokemon submission guidelines posted at:\n") + "https://github.com/TheeeEVan/PokemonBattle/blob/main/POKEMON_GUIDELINES.md\n\n")
+					
 			
 					// steps
 					console.log("Basic info... ✅")
