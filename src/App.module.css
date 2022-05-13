@@ -27,4 +27,40 @@
 	height: 0px;
 }
 
+/* PREGAME */
 
+/* set pregame div to take up whole screen and add gray background */
+.pregame {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	min-height: 100%;
+	background-color:  #bbb
+}
+
+/* add margin for content */
+.pregameContent {
+	margin: 10px;
+}
+
+.pokemonListContainer {
+	display: inline;
+	cursor: pointer;
+}
+
+.pokemonImage {
+	image-rendering: pixelated;
+	zoom: 1.5
+}
+
+.confirm {
+	position: fixed;
+	bottom: 5vh;
+	right: 5vw;
+}
+
+.confirmButton {
+	background-color: lightgreen;
+	font-size: 30px;
+}

@@ -1,1 +1,282 @@
-{"axew":{"name":"Axew","hp":100,"maxhp":100,"type":"dragon","energy":20,"maxEnergy":20,"minEnergy":2,"moves":{"Scratch":[10,2,false,"Axew scratches the opponent dealing 20 damage."],"Slash":[30,5,false,"Axew slashes the opponent dealing 30 damage."],"Dragon Claw":[50,10,true,"Axew uses his claw to hit the opponent dealing 50 damage. 50% chance of successful hit."],"Scary Face":[-50,5,false,"Axew scares the opponent. Heals himself for 50hp."]}},"charizard":{"name":"Charizard","hp":150,"maxhp":150,"type":"fire","energy":15,"maxEnergy":15,"minEnergy":5,"moves":{"Ember":[30,5,false,"Charizard burns the opponent dealing 30 damage."],"Air Slash":[40,7,false,"Charizard slashes the opponent in the air dealing 40 damage."],"Dragon Breath":[50,10,true,"Charizard blows his breath on the opponent dealing 50 damage. 50% chance of successful hit."],"Scary Face":[-25,5,false,"Charizard scares the opponent. Heals himself for 25hp."]}},"flareon":{"name":"Flareon","hp":150,"maxhp":150,"type":"fire","energy":20,"maxEnergy":20,"minEnergy":3,"moves":{"Ember":[20,3,false,"Flareon burns the opponent dealing 20 damage."],"Fire Fang":[30,5,false,"Flareon bites the opponent dealing 30 damage."],"Flare Blitz":[40,10,false,"Flareon creates a fire tornado, dealing 40 damage to the opponent."],"Scary Face":[-25,5,false,"Flareon scares the opponent. Heals himself for 25hp."]}},"jigglypuff":{"name":"Jigglypuff","hp":100,"maxhp":100,"type":"fairy","energy":15,"maxEnergy":15,"minEnergy":2,"moves":{"Pound":[10,2,false,"Jigglypuff pounds her opponent dealing 10 damage."],"Swallow":[30,5,false,"Jigglypuff swallows her opponent dealing 30 damage."],"Body Slam":[50,10,true,"Jigglypuff slams her opponent with her body dealing 50 damage. 50% chance of successful hit."],"Sweet Kiss":[-25,5,false,"Jigglypuff kisses the opponenet healing herself for 25hp."]}},"pikachu":{"name":"Pikachu","hp":100,"maxhp":100,"type":"electric","energy":15,"maxEnergy":15,"minEnergy":3,"moves":{"Thunder Shock":[20,3,false,"Pikachu strikes the opponent with lightning dealing 25 damage."],"Spark":[40,10,false,"Pikachu shocks the opponent dealing 65 damage."],"Electro Ball":[50,13,true,"Pikachu attempts to hit the opponent in ball form, dealing 75 damage. 50% chance of successful hit."],"Nuzzle":[-25,5,false,"Pikachu nuzzles the ground, healing for 25hp."]}},"raikou":{"name":"Raikou","hp":150,"maxhp":150,"type":"electric","energy":15,"maxEnergy":15,"minEnergy":3,"moves":{"Quick Attack":[20,3,false,"Raikou strikes the opponent dealing 20 damage."],"Spark":[40,7,false,"Raikou shocks the opponent dealing 65 damage."],"Thunder Fang":[50,10,true,"Raikou bites the opponent dealing 50 damage. 50% chance of successful hit."],"Howl":[-25,5,false,"Raikou howls healing themself for 25 damage."]}},"squirtle":{"name":"Squirtle","hp":100,"maxhp":100,"type":"water","energy":15,"maxEnergy":15,"minEnergy":3,"moves":{"Tackle":[20,3,false,"Squirtle tackles the opponent dealing 20 damage."],"Water Pulse":[40,7,false,"Squirtle sprays the opponent with water dealing 40 damage."],"Aqua Tail":[70,10,true,"Squirtle hits his opponent with his tail dealing 70 damage."],"Rain Dance":[-50,8,false,"Squirtle dances in the rain, healing himself for 50hp."]}},"vaporeon":{"name":"Vaporeon","maxhp":200,"hp":200,"type":"water","energy":20,"maxEnergy":20,"minEnergy":2,"moves":{"Drip":[10,2,false,"Vaporeon drops water on the opponent dealing 10 damage."],"Aurora Beam":[20,5,false,"Vaporeon strikes the opponent with an Aurora Beam dealing 40 damage."],"Water Pulse":[30,7,false,"Vaporeon splashes the opponent with water dealing 30 damage."],"Hydro Pump":[50,20,true,"Vaporeon sprays the opponent with water dealing 50 damage. 50% chance of successful hit."]}}}
+{
+	"axew": {
+		"name": "Axew",
+		"hp": 100,
+		"maxhp": 100,
+		"type": "dragon",
+		"energy": 20,
+		"maxEnergy": 20,
+		"minEnergy": 2,
+		"moves": {
+			"Scratch": [
+				10,
+				2,
+				false,
+				"Axew scratches the opponent dealing 20 damage."
+			],
+			"Slash": [
+				30,
+				5,
+				false,
+				"Axew slashes the opponent dealing 30 damage."
+			],
+			"Dragon Claw": [
+				50,
+				10,
+				true,
+				"Axew uses his claw to hit the opponent dealing 50 damage. 50% chance of successful hit."
+			],
+			"Scary Face": [
+				-50,
+				5,
+				false,
+				"Axew scares the opponent. Heals himself for 50hp."
+			]
+		}
+	},
+	"charizard": {
+		"name": "Charizard",
+		"hp": 150,
+		"maxhp": 150,
+		"type": "fire",
+		"energy": 15,
+		"maxEnergy": 15,
+		"minEnergy": 5,
+		"moves": {
+			"Ember": [
+				30,
+				5,
+				false,
+				"Charizard burns the opponent dealing 30 damage."
+			],
+			"Air Slash": [
+				40,
+				7,
+				false,
+				"Charizard slashes the opponent in the air dealing 40 damage."
+			],
+			"Dragon Breath": [
+				50,
+				10,
+				true,
+				"Charizard blows his breath on the opponent dealing 50 damage. 50% chance of successful hit."
+			],
+			"Scary Face": [
+				-25,
+				5,
+				false,
+				"Charizard scares the opponent. Heals himself for 25hp."
+			]
+		}
+	},
+	"flareon": {
+		"name": "Flareon",
+		"hp": 150,
+		"maxhp": 150,
+		"type": "fire",
+		"energy": 20,
+		"maxEnergy": 20,
+		"minEnergy": 3,
+		"moves": {
+			"Ember": [
+				20,
+				3,
+				false,
+				"Flareon burns the opponent dealing 20 damage."
+			],
+			"Fire Fang": [
+				30,
+				5,
+				false,
+				"Flareon bites the opponent dealing 30 damage."
+			],
+			"Flare Blitz": [
+				40,
+				10,
+				false,
+				"Flareon creates a fire tornado, dealing 40 damage to the opponent."
+			],
+			"Scary Face": [
+				-25,
+				5,
+				false,
+				"Flareon scares the opponent. Heals himself for 25hp."
+			]
+		}
+	},
+	"jigglypuff": {
+		"name": "Jigglypuff",
+		"hp": 100,
+		"maxhp": 100,
+		"type": "fairy",
+		"energy": 15,
+		"maxEnergy": 15,
+		"minEnergy": 2,
+		"moves": {
+			"Pound": [
+				10,
+				2,
+				false,
+				"Jigglypuff pounds her opponent dealing 10 damage."
+			],
+			"Swallow": [
+				30,
+				5,
+				false,
+				"Jigglypuff swallows her opponent dealing 30 damage."
+			],
+			"Body Slam": [
+				50,
+				10,
+				true,
+				"Jigglypuff slams her opponent with her body dealing 50 damage. 50% chance of successful hit."
+			],
+			"Sweet Kiss": [
+				-25,
+				5,
+				false,
+				"Jigglypuff kisses the opponenet healing herself for 25hp."
+			]
+		}
+	},
+	"pikachu": {
+		"name": "Pikachu",
+		"hp": 100,
+		"maxhp": 100,
+		"type": "electric",
+		"energy": 15,
+		"maxEnergy": 15,
+		"minEnergy": 3,
+		"moves": {
+			"Thunder Shock": [
+				20,
+				3,
+				false,
+				"Pikachu strikes the opponent with lightning dealing 25 damage."
+			],
+			"Spark": [
+				40,
+				10,
+				false,
+				"Pikachu shocks the opponent dealing 65 damage."
+			],
+			"Electro Ball": [
+				50,
+				13,
+				true,
+				"Pikachu attempts to hit the opponent in ball form, dealing 75 damage. 50% chance of successful hit."
+			],
+			"Nuzzle": [
+				-25,
+				5,
+				false,
+				"Pikachu nuzzles the ground, healing for 25hp."
+			]
+		}
+	},
+	"raikou": {
+		"name": "Raikou",
+		"hp": 150,
+		"maxhp": 150,
+		"type": "electric",
+		"energy": 15,
+		"maxEnergy": 15,
+		"minEnergy": 3,
+		"moves": {
+			"Quick Attack": [
+				20,
+				3,
+				false,
+				"Raikou strikes the opponent dealing 20 damage."
+			],
+			"Spark": [
+				40,
+				7,
+				false,
+				"Raikou shocks the opponent dealing 65 damage."
+			],
+			"Thunder Fang": [
+				50,
+				10,
+				true,
+				"Raikou bites the opponent dealing 50 damage. 50% chance of successful hit."
+			],
+			"Howl": [
+				-25,
+				5,
+				false,
+				"Raikou howls healing themself for 25 damage."
+			]
+		}
+	},
+	"squirtle": {
+		"name": "Squirtle",
+		"hp": 100,
+		"maxhp": 100,
+		"type": "water",
+		"energy": 15,
+		"maxEnergy": 15,
+		"minEnergy": 3,
+		"moves": {
+			"Tackle": [
+				20,
+				3,
+				false,
+				"Squirtle tackles the opponent dealing 20 damage."
+			],
+			"Water Pulse": [
+				40,
+				7,
+				false,
+				"Squirtle sprays the opponent with water dealing 40 damage."
+			],
+			"Aqua Tail": [
+				70,
+				10,
+				true,
+				"Squirtle hits his opponent with his tail dealing 70 damage."
+			],
+			"Rain Dance": [
+				-50,
+				8,
+				false,
+				"Squirtle dances in the rain, healing himself for 50hp."
+			]
+		}
+	},
+	"vaporeon": {
+		"name": "Vaporeon",
+		"maxhp": 200,
+		"hp": 200,
+		"type": "water",
+		"energy": 20,
+		"maxEnergy": 20,
+		"minEnergy": 2,
+		"moves": {
+			"Drip": [
+				10,
+				2,
+				false,
+				"Vaporeon drops water on the opponent dealing 10 damage."
+			],
+			"Aurora Beam": [
+				20,
+				5,
+				false,
+				"Vaporeon strikes the opponent with an Aurora Beam dealing 40 damage."
+			],
+			"Water Pulse": [
+				30,
+				7,
+				false,
+				"Vaporeon splashes the opponent with water dealing 30 damage."
+			],
+			"Hydro Pump": [
+				50,
+				20,
+				true,
+				"Vaporeon sprays the opponent with water dealing 50 damage. 50% chance of successful hit."
+			]
+		}
+	}
+}

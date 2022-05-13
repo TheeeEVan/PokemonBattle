@@ -4,6 +4,8 @@ pokemonMaker.js
 -----------------
 a cli tool for creating user generated pokemon within the app
 
+also i didn't know about inquirer when i made the create part of the script
+
 */
 
 // import packages
@@ -11,6 +13,7 @@ var prompt = require('prompt-sync')({sigint: true, eot: true});
 const chalk = require("chalk");
 const Spinner = require('cli-spinner').Spinner;
 const fs = require("fs")
+const inquirer = require('inquirer');
 
 // invalid input function cause i dont wanna copy past this over and over again
 function invalid(text = "Invalid Input!") {
@@ -577,12 +580,157 @@ if (action == "1") {
 				
 			})
 		}
+
+		console.log(chalk.bgWhite(chalk.black(chalk.underline("\n Thanks for using PokemonMaker! "))))
 	});
 }
 
 // edit existing pokemon
 else if (action == "2") {
-	console.log(chalk.bgYellow("Coming Soon!"))
-}
+	console.clear()
+	// get the jaon data
+	let rawdata = fs.readFile('./src/data/pokemon.json', async (err, data) => {
+	    if (err) throw err;
 
-console.log(chalk.bgWhite(chalk.black(chalk.underline("\n Thanks for using PokemonMaker! "))))
+		// convert to js object
+	    let allPokemon = JSON.parse(data);
+
+		// ask which pokemon user wants
+		inquirer.prompt([
+			{
+				type: 'rawlist',
+				name: 'pokemon',
+				message: 'Which pokemon would you like to edit?',
+				choices: Object.keys(allPokemon)
+			}
+		])
+		// this runs after user makes selection and passes an object with responses
+		.then((answers) => {
+			// store the pokemon we are editing in object
+			let pokemon = allPokemon[answers.pokemon]
+
+			// this function will display pokemon stats, there is one log per line to make this somewhat understandable
+			function showStats() {
+				console.log(chalk.bold(chalk.underline(pokemon.name)))
+				console.log(chalk.bold("Type: ") + pokemon.type)
+				console.log(chalk.bold("HP: ") + pokemon.hp)
+				console.log(chalk.bold("Energy: ") + pokemon.energy)
+				console.log("\n")
+				// attacks
+				console.log(chalk.bold("Attacks"))
+				console.log("\u0009" + Object.keys(pokemon.moves)[0] + ":") // U+0009 Unicode Character 'CHARACTER TABULATION'
+				console.log(chalk.bold("\u0009\u0009Damage: ") + pokemon.moves[Object.keys(pokemon.moves)[0]][0])
+				console.log(chalk.bold("\u0009\u0009Energy: ") + pokemon.moves[Object.keys(pokemon.moves)[0]][1])
+				console.log(chalk.bold("\u0009\u0009Random: ") + pokemon.moves[Object.keys(pokemon.moves)[0]][2])
+				console.log(chalk.bold("\u0009\u0009Description: ") + pokemon.moves[Object.keys(pokemon.moves)[0]][3])
+				console.log("\n")
+
+				console.log("\u0009" + Object.keys(pokemon.moves)[1] + ":") // U+0009 Unicode Character 'CHARACTER TABULATION'
+				console.log(chalk.bold("\u0009\u0009Damage: ") + pokemon.moves[Object.keys(pokemon.moves)[1]][0])
+				console.log(chalk.bold("\u0009\u0009Energy: ") + pokemon.moves[Object.keys(pokemon.moves)[1]][1])
+				console.log(chalk.bold("\u0009\u0009Random: ") + pokemon.moves[Object.keys(pokemon.moves)[1]][2])
+				console.log(chalk.bold("\u0009\u0009Description: ") + pokemon.moves[Object.keys(pokemon.moves)[1]][3])
+				console.log("\n")
+				
+				console.log("\u0009" + Object.keys(pokemon.moves)[2] + ":") // U+0009 Unicode Character 'CHARACTER TABULATION'
+				console.log(chalk.bold("\u0009\u0009Damage: ") + pokemon.moves[Object.keys(pokemon.moves)[2]][0])
+				console.log(chalk.bold("\u0009\u0009Energy: ") + pokemon.moves[Object.keys(pokemon.moves)[2]][1])
+				console.log(chalk.bold("\u0009\u0009Random: ") + pokemon.moves[Object.keys(pokemon.moves)[2]][2])
+				console.log(chalk.bold("\u0009\u0009Description: ") + pokemon.moves[Object.keys(pokemon.moves)[2]][3])
+				console.log("\n")
+
+				console.log("\u0009" + Object.keys(pokemon.moves)[3] + ":") // U+0009 Unicode Character 'CHARACTER TABULATION'
+				console.log(chalk.bold("\u0009\u0009Damage: ") + pokemon.moves[Object.keys(pokemon.moves)[3]][0])
+				console.log(chalk.bold("\u0009\u0009Energy: ") + pokemon.moves[Object.keys(pokemon.moves)[3]][1])
+				console.log(chalk.bold("\u0009\u0009Random: ") + pokemon.moves[Object.keys(pokemon.moves)[3]][2])
+				console.log(chalk.bold("\u0009\u0009Description: ") + pokemon.moves[Object.keys(pokemon.moves)[3]][3])
+				console.log("\n\n")
+			}
+
+			function handleEdit() {
+				// clear console and add stats
+				console.clear()
+				showStats()
+				// ask user for what they want to edit
+				inquirer.prompt([
+				{
+					type: 'rawlist',
+					name: 'editType',
+					message: 'Which pokemon would you like to edit?',
+					choices: ["hp", "energy", "moves", "quit"]
+				}])
+				.then(answers => {
+					// handle each edit
+					if (answers.editType == "hp") {
+						console.clear()
+						inquirer.prompt([
+							{
+								type: "input",
+								name: "hp",
+								message: "What should " + pokemon.name + "'s new hp value be?",
+								validate(input) {
+									if(/^[0-9]+$/g.test(input)) { // regex test for digits
+										return true
+									}
+
+									throw Error('Please provide a valid number');
+								}
+							}
+						])
+						.then(answers => {
+							allPokemon[pokemon.name.toLowerCase()].hp = parseInt(answers.hp)
+							console.log(pokemon.name + "'s hp set to " + answers.hp)
+							prompt("press enter to continure...")
+							handleEdit()
+						})
+					}
+
+					else if (answers.editType == "energy") {
+						// find highest energy attack
+						let highestEnergy = pokemon.moves[Object.keys(pokemon.moves)[0]][1]
+
+						if (pokemon.moves[Object.keys(pokemon.moves)[1]][1] > highestEnergy) {
+							highestEnergy = pokemon.moves[Object.keys(pokemon.moves)[1]][1]
+						}
+
+						if (pokemon.moves[Object.keys(pokemon.moves)[2]][1] > highestEnergy) {
+							highestEnergy = pokemon.moves[Object.keys(pokemon.moves)[2]][1]
+						}
+
+						if (pokemon.moves[Object.keys(pokemon.moves)[3]][1] > highestEnergy) {
+							highestEnergy = pokemon.moves[Object.keys(pokemon.moves)[3]][1]
+						}
+
+						
+						console.clear()
+						inquirer.prompt([
+							{
+								type: "input",
+								name: "energy",
+								message: "What should " + pokemon.name + "'s new energy value be? It must be no lower than " + highestEnergy,
+								validate(input) {
+									if(/^[0-9]+$/g.test(input)) { // regex test for digits
+										if (!parseInt(input) < highestEnergy)
+										{
+											return true
+										}
+									}
+
+									throw Error('Please provide a valid number');
+								}
+							}
+						])
+						.then(answers => {
+							allPokemon[pokemon.name.toLowerCase()].energy = parseInt(answers.energy)
+							console.log(pokemon.name + "'s energy set to " + answers.energy)
+							prompt("press enter to continure...")
+							handleEdit()
+						})
+					}
+				})
+			}
+			
+			handleEdit()
+		})
+	})
+}

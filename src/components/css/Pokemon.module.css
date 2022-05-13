@@ -62,8 +62,8 @@
 	top: 0;
 	background-color: rgba(209, 209, 209, .8);
 	border: 2px black solid;
-	padding: 2px;
 	margin-top: 15px;
+	padding: 2px;
 	font-size: 15px;
 	text-align: center;
 }
@@ -77,5 +77,16 @@
 }
 
 .pokemonImage {
+	height: 150px;
+	margin-bottom: 5px;
+	display: flex;
+	justify-content: center;
+	flex-direction: column-reverse;
+}
+
+.pokemonImage > img {
+	position: relative;
+	margin: auto;
+	image-rendering: pixelated;
 	filter: drop-shadow(-4px 4px 2px #222);
 }

@@ -10,7 +10,7 @@ class Pokemon extends React.Component {
 		
 		this.state = {
 			pokemon: props.pokemon,
-			back: props.back ? 'back/' : '',
+			back: props.back ? '-back/' : '-front',
 			styles: {
 				hoverInfo: {display: "none"}
 			},
@@ -46,7 +46,7 @@ class Pokemon extends React.Component {
 							})
 					}}>
 				<div className={styles.pokemonImage}>
-					<img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${this.state.back}${this.state.id}.png`} width="150px"/>
+					<img src={`https://raw.githubusercontent.com/tdmalone/pokecss-media/master/graphics/pokemon/ani${this.state.back}/${this.state.pokemon.name.toLowerCase()}.gif`} style={this.state.pokemon.hp <= 0 ? {filter: "grayscale(90%)"} : {}}/>
 				</div>
 				<div className={`${styles.infoContainer} mono`}>
 					<div className={this.state.pokemon.hp > this.state.pokemon.maxhp / 5 ? `${styles.healthBar} ${styles.normal}` : `${styles.healthBar} ${styles.critical}`} style={{"--health": (this.state.pokemon.hp / this.state.pokemon.maxhp * 100) + "%"}}></div>
@@ -64,3 +64,5 @@ class Pokemon extends React.Component {
 }
 
 export default Pokemon
+
+// 
