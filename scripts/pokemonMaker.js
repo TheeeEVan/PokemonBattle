@@ -587,6 +587,7 @@ if (action == "1") {
 
 // edit existing pokemon
 else if (action == "2") {
+
 	console.clear()
 	// get the jaon data
 	let rawdata = fs.readFile('./src/data/pokemon.json', async (err, data) => {
@@ -594,6 +595,9 @@ else if (action == "2") {
 
 		// convert to js object
 	    let allPokemon = JSON.parse(data);
+
+		// stores all changes made to pokemnon
+		let changes = []
 
 		// ask which pokemon user wants
 		inquirer.prompt([
@@ -648,6 +652,8 @@ else if (action == "2") {
 			}
 
 			function handleEdit() {
+				// refresh pokemon after any changes
+				pokemon = allPokemon[answers.pokemon]
 				// clear console and add stats
 				console.clear()
 				showStats()
@@ -680,6 +686,8 @@ else if (action == "2") {
 						.then(answers => {
 							allPokemon[pokemon.name.toLowerCase()].hp = parseInt(answers.hp)
 							console.log(pokemon.name + "'s hp set to " + answers.hp)
+							changes.push(pokemon.name + "'s hp set to " + answers.hp)
+							console.log(changes)
 							prompt("press enter to continure...")
 							handleEdit()
 						})
@@ -723,14 +731,135 @@ else if (action == "2") {
 						.then(answers => {
 							allPokemon[pokemon.name.toLowerCase()].energy = parseInt(answers.energy)
 							console.log(pokemon.name + "'s energy set to " + answers.energy)
+							changes.push(pokemon.name + "'s energy set to " + answers.energy)
 							prompt("press enter to continure...")
 							handleEdit()
 						})
 					}
+
+					else if (answers.editType == "moves") {
+						console.clear()
+						inquirer.prompt([
+							{
+								type: "rawlist",
+								name: "move",
+								message: "Which move would you like to edit?",
+								choices: Object.keys(pokemon.moves)
+							},
+							{
+								type: "rawlist",
+								name: "editType",
+								message: "What would you like to edit?",
+								choices: ["damage", "energy", "random", "description", "go back"]
+							}
+						])
+						.then(answers => {
+							if (answers.editType == "damage") {
+								inquirer.prompt([
+									{
+										type: "input",
+										name: "damage",
+										message: "What should " + pokemon.name + "'s " + answers.move + " damage be?",
+										validate(input) {
+											if(/^[0-9]+$/g.test(input)) { // regex test for digits
+												return true
+											}
+
+											throw Error('Please provide a valid number');
+										}
+									}
+								])
+								.then(damageAnswers => {
+									allPokemon[pokemon.name.toLowerCase()].moves[answers.move][0] = parseInt(damageAnswers.damage)
+									console.log(pokemon.name + "'s " + answers.move + " damage set to " + damageAnswers.damage)
+									changes.push(pokemon.name + "'s " + answers.move + " damage set to " + damageAnswers.damage)
+									prompt("press enter to continure...")
+									handleEdit()
+								})
+							} else if (answers.editType == "energy") {
+								inquirer.prompt([
+									{
+										type: "input",
+										name: "energy",
+										message: "What should " + pokemon.name + "'s " + answers.move + " energy usage be? It cannot be higher than " + pokemon.maxEnergy + ".",
+										validate(input) {
+											if(/^[0-9]+$/g.test(input)) { // regex test for digits
+												if (parseInt(input) < pokemon.maxEnergy)
+												{
+													return true
+												}
+											}
+
+											throw Error('Please provide a valid number');
+										}
+									}
+								])
+								.then(energyAnswers => {
+									allPokemon[pokemon.name.toLowerCase()].moves[answers.move][1] = parseInt(energyAnswers.energy)
+									console.log(pokemon.name + "'s " + answers.move + " energy usage set to " + energyAnswers.energy)
+									changes.push(pokemon.name + "'s " + answers.move + " energy usage set to " + energyAnswers.energy)
+									prompt("press enter to continure...")
+									handleEdit()
+								})
+							} else if (answers.editType == "random") {
+								inquirer.prompt([
+									{
+										type: "confirm",
+										name: "random",
+										message: "Should " + pokemon.name + "'s " + answers.move + " be random?"
+									}
+								])
+								.then(randomAnswers => {
+									allPokemon[pokemon.name.toLowerCase()].moves[answers.move][2] = randomAnswers.random
+									console.log(pokemon.name + "'s " + answers.move + " random set to " + randomAnswers.random)
+									changes.push(pokemon.name + "'s " + answers.move + " random set to " + randomAnswers.random)
+									prompt("press enter to continure...")
+									handleEdit()
+								})
+							} else if (answers.editType == "description") {
+								inquirer.prompt([
+									{
+										type: "input",
+										name: "description",
+										message: "What should " + pokemon.name + "'s " + answers.move + " description be?"
+									}
+								])
+								.then(descriptionAnswers => {
+									allPokemon[pokemon.name.toLowerCase()].moves[answers.move][3] = descriptionAnswers.description
+									console.log(pokemon.name + "'s " + answers.move + " description set to " + descriptionAnswers.description)
+									changes.push(pokemon.name + "'s " + answers.move + " description set to " + descriptionAnswers.description)
+									prompt("press enter to continure...")
+									handleEdit()
+								})
+							}
+						})
+					} else {
+						// edits are complete, confirm user wants to save changes and save them
+						inquirer.prompt([
+							{
+								type: "confirm",
+								name: "save",
+								message: chalk.bgWhite("Are you sure you want to save the following changes?\n") + changes.join("\n• ")
+							}
+						])
+						.then(answers => {
+							if (answers.save) {
+								// save all pokemon to file
+								fs.writeFileSync("./pokemon.json", JSON.stringify(allPokemon, null, 4))
+								console.log(chalk.bgGreen("✅ Changes saved!"))
+								console.log("\n")
+								console.log(chalk.bgWhite(chalk.black(chalk.bold("Thanks for using Pokemon Maker!\n"))))
+								prompt("press enter to exit...")
+							}
+						})
+					}
+
 				})
 			}
 			
 			handleEdit()
 		})
+
+
 	})
 }

@@ -20,8 +20,8 @@
 - Run setup in shell: ```npm run setup repl```
 - Start repl (*Ctrl+Enter*)
 
-### Add A Pokemon:
-***Ensure you have a plan for your pokemon first as this script is only meant to import the data into the program, not to design a pokemon!***
+### Add/Edit A Pokemon:
+***BE CAREFUL THIS DOESNT WORK VERY WELL CAUSE I RUSHED IT***
 - Open a shell in the root directory of the project
 - Run ```npm run pokemonMaker```
 - Follow the instructions given to you
